@@ -18,6 +18,15 @@
       <header class="header">
         <nav role="navigation">
           <ul class="nav nav-pills pull-right">
+            <%= if @conn.assigns[:user] do %>
+            <li>
+              <%= link "logout", to: auth_path(@conn, :signout) %>
+            </li>
+            <% else %>
+            <li>
+              <%= link "signin", to: auth_path(@conn, :request, "github") %>
+            </li>
+            <% end %>
             <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
           </ul>
         </nav>
